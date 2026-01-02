@@ -1,77 +1,15 @@
-<!DOCTYPE html>
-<html lang="tr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#0d9488" />
-    <meta name="description" content="Eczacılar için kapsamlı hesaplama araçları ve stok analizi." />
-    
-    <!-- iOS / Safari support -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Eczacı Asistanı" />
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3063/3063176.png" />
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
-
-    <title>Eczacı Asistanı</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      :root {
-        --safe-top: env(safe-area-inset-top);
-        --safe-bottom: env(safe-area-inset-bottom);
-      }
-      body {
-        -webkit-tap-highlight-color: transparent;
-        overscroll-behavior-y: contain;
-        background-color: #f8fafc;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      }
-      @media all and (display-mode: standalone) {
-        header {
-          padding-top: calc(1rem + var(--safe-top));
-        }
-        nav {
-          padding-bottom: calc(0.75rem + var(--safe-bottom));
-        }
-      }
-      .animate-fade-in { animation: fadeIn 0.3s ease-out; }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .animate-blink {
-        animation: blinker 1s linear infinite;
-      }
-      @keyframes blinker {
-        50% { opacity: 0.1; }
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-  }
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
 }
-</script>
-</head>
-  <body class="bg-slate-100 text-slate-900 antialiased selection:bg-teal-100">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js')
-            .then(reg => console.log('PWA Registered'))
-            .catch(err => console.log('PWA Registration failed', err));
-        });
-      }
-    </script>
-  </body>
-</html>
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
